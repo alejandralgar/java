@@ -30,7 +30,6 @@ public class ControladorRegistro {
     public ControladorRegistro() {
         this.vista = new VistaRegistro();
         this.vistaHtml = new VistaReporteHTML();
-        // Ajusta estos datos a tu conexion real
         this.conexion = new api_modelo("root", "123456789", "localhost", "3306", "tiendaparking");
     }
 
