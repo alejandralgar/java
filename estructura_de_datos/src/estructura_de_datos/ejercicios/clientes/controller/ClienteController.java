@@ -13,6 +13,7 @@ public class ClienteController {
         this.obj_lista_clientes = new ArrayList<>();
     }
 
+    //CRUD
     // Ver información de todos los clientes
     public void ver_info() {
         for (ClienteModelo cliente : this.obj_lista_clientes) {
@@ -24,4 +25,34 @@ public class ClienteController {
     public void agregar_cliente(ClienteModelo obj_clientes_nuevo) {
         this.obj_lista_clientes.add(obj_clientes_nuevo);
     }
+    
+    //Insertar en diferente posición
+    public void insertar_en_posicion(int index, ClienteModelo cliente) {
+    if (index >= 0 && index <= obj_lista_clientes.size()) {
+        obj_lista_clientes.add(index, cliente);
+    } else {
+        System.out.println("Índice fuera de rango");
+    }
+    }
+
+    //Obtenemos todos los clientes
+    public ClienteModelo obtener_cliente(int index) {
+    if (index >= 0 && index < obj_lista_clientes.size()) {
+        return obj_lista_clientes.get(index);
+    } else {
+        System.out.println("Índice inválido");
+        return null;
+    }
+    }
+    
+    //Remplazamos el cliente en cualquier posición
+    public void reemplazar_cliente(int index, ClienteModelo nuevoCliente) {
+    if (index >= 0 && index < obj_lista_clientes.size()) {
+        obj_lista_clientes.set(index, nuevoCliente);
+    } else {
+        System.out.println("Índice inválido");
+    }
+    }
+
+    
 }

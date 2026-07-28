@@ -1,9 +1,9 @@
 package estructura_de_datos;
 
 import estructura_de_datos.dinamicos.Dinamico;
+import estructura_de_datos.estaticos.Estaticos;
 import estructura_de_datos.ejercicios.clientes.controller.ClienteController;
 import estructura_de_datos.ejercicios.clientes.modelo.ClienteModelo;
-import estructura_de_datos.estaticos.Estaticos;
 import java.util.Scanner;
 
 
@@ -22,19 +22,75 @@ public class Estructura_de_datos {
         
         //ejercicios.clientes
         // clientes
-        Scanner obj_teclado = new Scanner(System.in);
-        System.out.println("Escriba el nombre: ");
-        String nombre_cliente = obj_teclado.nextLine();
-        System.out.println("Escriba la cédula: ");
-        String cedula_cliente = obj_teclado.nextLine();
+         Scanner sc = new Scanner(System.in);
+        ClienteController controller = new ClienteController();
 
-        ClienteModelo obj_cliente = new ClienteModelo(nombre_cliente, cedula_cliente);
+        int opcion;
+        do {
+            System.out.println("\n--- MENÚ CLIENTES ---");
+            System.out.println("1. Agregar cliente");
+            System.out.println("2. Insertar cliente en posición");
+            System.out.println("3. Obtener cliente por índice");
+            System.out.println("4. Reemplazar cliente");
+            System.out.println("5. Ver todos los clientes");
+            System.out.println("0. Salir");
+            System.out.print("Elija opción: ");
+            opcion = sc.nextInt();
+            sc.nextLine(); // limpiar buffer
 
-        // Crear controlador y usarlo
-        ClienteController obj_lista = new ClienteController();
-        obj_lista.agregar_cliente(obj_cliente);
-        obj_lista.ver_info();
-        
+            switch (opcion) {
+                case 1:
+                    System.out.print("Nombre: ");
+                    String nombre = sc.nextLine();
+                    System.out.print("Cédula: ");
+                    String cedula = sc.nextLine();
+                    controller.agregar_cliente(new ClienteModelo(nombre, cedula));
+                    break;
+
+                case 2:
+                    System.out.print("Posición: ");
+                    int pos = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Nombre: ");
+                    nombre = sc.nextLine();
+                    System.out.print("Cédula: ");
+                    cedula = sc.nextLine();
+                    controller.insertar_en_posicion(pos, new ClienteModelo(nombre, cedula));
+                    break;
+
+                case 3:
+                    System.out.print("Índice: ");
+                    int idx = sc.nextInt();
+                    ClienteModelo cliente = controller.obtener_cliente(idx);
+                    if (cliente != null) cliente.VerInfo();
+                    break;
+
+                case 4:
+                    System.out.print("Índice a reemplazar: ");
+                    idx = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Nuevo nombre: ");
+                    nombre = sc.nextLine();
+                    System.out.print("Nueva cédula: ");
+                    cedula = sc.nextLine();
+                    controller.reemplazar_cliente(idx, new ClienteModelo(nombre, cedula));
+                    break;
+
+                case 5:
+                    controller.ver_info();
+                    break;
+
+                case 0:
+                    System.out.println("Saliendo...");
+                    break;
+
+                default:
+                    System.out.println("Opción inválida");
+            }
+        } while (opcion != 0);
+
+        sc.close();
+    
         
     }
     
