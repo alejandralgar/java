@@ -20,7 +20,7 @@ public class Estructura_de_datos {
         new Estaticos();           // inicializa el array
         Estaticos.imprimir_datos(); // imprime los datos
         
-        //ejercicios.clientes
+        //ejercicios.clientes  - array dinamicos
         // clientes
          Scanner sc = new Scanner(System.in);
         ClienteController controller = new ClienteController();

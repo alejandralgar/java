@@ -4,6 +4,7 @@ import estructura_de_datos.ejercicios.clientes.modelo.ClienteModelo;
 import java.util.ArrayList;
 import java.util.List;
 
+//Ejercicio de listas dinamicas
 public class ClienteController {
     // Inicializar lista dinámica
     public List<ClienteModelo> obj_lista_clientes;

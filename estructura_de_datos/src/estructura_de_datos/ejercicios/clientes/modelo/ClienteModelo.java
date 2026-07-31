@@ -1,7 +1,8 @@
 
 package estructura_de_datos.ejercicios.clientes.modelo;
 
-
+//Dinamicos
+//Se importa a ClienteController.java 
 public class ClienteModelo {
     
     private String nombre;
